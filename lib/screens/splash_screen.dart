@@ -1,23 +1,47 @@
+import 'package:common_layout_setup_kit/screens/splash_screen_controller.dart';
+import 'package:common_layout_setup_kit/utils/common_appbar.dart';
+import 'package:common_layout_setup_kit/utils/common_scaffold.dart';
+import 'package:common_layout_setup_kit/utils/extensions.dart';
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 
 class SplashScreen extends StatelessWidget {
-  SplashScreen({super.key});
-  
-  final controller = Get.put(SplashScreenController());
+  SplashScreen({
+    super.key,
+    required this.homeScreen,
+    required this.gradientColorList,
+    required this.bannerAssetPath,
+    required this.spalshLogoAssetPath,
+  }) {
+    controller = Get.put(SplashScreenController(
+      homeScreen: homeScreen,
+    ));
+  }
+
+  final Widget homeScreen;
+  final List<Color> gradientColorList;
+  final String bannerAssetPath;
+  final String spalshLogoAssetPath;
+
+  late final SplashScreenController controller;
 
   @override
   Widget build(BuildContext context) {
     return CommonScaffold(
+      gradientColorList: gradientColorList,
       child: Column(
         children: [
-          const CommonAppbar(),
+          CommonAppbar(
+            bannerAssetPath: bannerAssetPath,
+          ),
           12.verticalSpace,
-          const Expanded(
+          Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                AnimatedLogo(),
+                AnimatedLogo(
+                  splashLogoAssetPath: spalshLogoAssetPath,
+                ),
               ],
             ),
           ),
@@ -28,7 +52,12 @@ class SplashScreen extends StatelessWidget {
 }
 
 class AnimatedLogo extends StatefulWidget {
-  const AnimatedLogo({super.key});
+  const AnimatedLogo({
+    super.key,
+    required this.splashLogoAssetPath,
+  });
+
+  final String splashLogoAssetPath;
 
   @override
   State<AnimatedLogo> createState() => _AnimatedLogoState();
@@ -73,7 +102,7 @@ class _AnimatedLogoState extends State<AnimatedLogo>
                   Colors.white.withOpacity(0.3),
                 ])),
             child: Image.asset(
-              Assets.car,
+              widget.splashLogoAssetPath,
               width: sizeAnimation.value,
               height: sizeAnimation.value,
             ),

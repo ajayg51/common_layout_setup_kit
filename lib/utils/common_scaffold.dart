@@ -4,15 +4,17 @@ class CommonScaffold extends StatelessWidget {
   const CommonScaffold({
     super.key,
     required this.child,
+    required this.gradientColorList,
   });
 
   final Widget child;
-
+  final List<Color> gradientColorList;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: CommonGradient(
+          gradientColorList: gradientColorList,
           child: child,
         ),
       ),
@@ -24,9 +26,12 @@ class CommonGradient extends StatelessWidget {
   const CommonGradient({
     super.key,
     required this.child,
+    required this.gradientColorList,
   });
 
   final Widget child;
+  final List<Color> gradientColorList;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,11 +39,7 @@ class CommonGradient extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.bottomLeft,
           end: Alignment.topRight,
-          colors: [
-            Colors.black,
-            Colors.black.withOpacity(0.7),
-            Colors.grey.withOpacity(0.7),
-          ],
+          colors: gradientColorList,
         ),
       ),
       child: Column(
