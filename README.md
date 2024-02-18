@@ -4,7 +4,7 @@
 
 
 ```
-  Contains boiler-plate code like 
+  Contains boilerplate code like 
   * Splash Screen, Appbar
   * Extension methods for horizontal and vertical spacing.
 ```
