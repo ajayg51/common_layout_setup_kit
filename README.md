@@ -1,6 +1,11 @@
 # Common Repo for utility files
 
-##   ( RED FLAG ) Always check ref ID of dependent repos 
+##   ( RED FLAG ) Always check ref ID of dependent repos
+
+##  explicitly add import if auto import not working
+```
+  import 'package:common_layout_setup_kit/utils/common_scaffold.dart';
+```
 
 ###  Paste below lines with latest commit ID of this repo in pubspec.yaml file of dependent flutter app at dependencies indentation level
 
