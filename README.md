@@ -1,5 +1,7 @@
 # Common Repo for utility files
 
+#  for kotlin version issue during build check all packages supported version one by one
+
 ##   ( RED FLAG ) Always check ref ID of dependent repos
 
 ##  explicitly add import if auto import not working
